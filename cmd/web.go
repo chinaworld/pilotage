@@ -36,7 +36,7 @@ var CmdWeb = cli.Command{
 }
 
 //
-func runWeb(c *cli.Context) {
+func runWeb(c *cli.Context) error {
 	m := macaron.New()
 
 	//Set Macaron Web Middleware And Routers
@@ -74,4 +74,6 @@ func runWeb(c *cli.Context) {
 	default:
 		break
 	}
+
+	return nil
 }
