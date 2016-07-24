@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/codegangsta/cli"
+	"github.com/urfave/cli"
 	"gopkg.in/macaron.v1"
 
 	"github.com/containerops/pilotage/setting"
