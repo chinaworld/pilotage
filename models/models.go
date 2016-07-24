@@ -35,7 +35,7 @@ func Sync() error {
 	log.Info("Sync database structs")
 
 	db.AutoMigrate(&Service{}, &Component{})
-	db.AutoMigrate(&Pipeline{}, &Stage{}, &Movement{})
+	db.AutoMigrate(&Pipeline{}, &Stage{}, &Movement{}, &Outcome{})
 	db.AutoMigrate(&Event{}, &EventType{})
 
 	return nil
