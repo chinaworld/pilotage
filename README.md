@@ -16,7 +16,7 @@ Pilotage is a DevOps workflow engine with customizable DevOps component reposito
 
 ## Why it matters ?
 
-## The Pilotage's Story :)
+## The Pilotage's story :)
 
 ## Runtime configuration
 
@@ -37,7 +37,7 @@ uri = containerops:containerops@/containerops?charset=utf8&parseTime=True&loc=As
 ```
 
 #### Nginx configuration
-It's a Nginx config example. You can change **client_max_body_size** what limited upload file size. You should copy `containerops.me` keys from `cert/containerops.me` to `/etc/nginx`, then run **Dockyard** with `http` mode and listen on `127.0.0.1:9911`.
+It's a Nginx config example. You can change **client_max_body_size** what limited upload file size. You should copy `containerops.me` keys from `cert/containerops.me` to `/etc/nginx`, then run **pilotage** with `http` mode and listen on `127.0.0.1:9911`.
 
 ```nginx
 upstream pilostage_upstream {
@@ -80,17 +80,17 @@ server {
 }
 ```
 
-### Start dockyard service
+### Test pilotage service
 - Run directly:
 
 ```bash
-./dockyard web --address 0.0.0.0
+./pilotage web --address 0.0.0.0
 ```
 
 - Run with Nginx:
 
 ```bash
-./dockyard web --address 127.0.0.1 --port 9911 &
+./pilotage web --address 127.0.0.1 --port 9911 &
 ```
 
 ## Update The Libraries Dependencies
@@ -100,32 +100,6 @@ go get -u -v github.com/codegangsta/cli
 go get -u -v gopkg.in/macaron.v1
 go get -u -v github.com/jinzhu/gorm
 ```
-
-## How to involve
-If any issues are encountered while using the dockyard project, several avenues are available for support:
-<table>
-<tr>
-	<th align="left">
-	Issue Tracker
-	</th>
-	<td>
-	https://github.com/containerops/dockyard/issues
-	</td>
-</tr>
-<tr>
-	<th align="left">
-	Google Groups
-	</th>
-	<td>
-	https://groups.google.com/forum/#!forum/dockyard-dev
-	</td>
-</tr>
-</table>
-
-
-## Who should join
-- Ones who want to choose a container image hub instead of docker hub.
-- Ones who want to ease the burden of container image management.
 
 ## Certificate of Origin
 By contributing to this project you agree to the Developer Certificate of
