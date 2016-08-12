@@ -3,9 +3,9 @@ package models
 import (
 	"os"
 
+	log "github.com/Sirupsen/logrus"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"github.com/ngaut/log"
 
 	"github.com/containerops/pilotage/setting"
 )
