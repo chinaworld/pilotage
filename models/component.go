@@ -21,7 +21,7 @@ type Component struct {
 	DeletedAt      *time.Time `json:"deleted" sql:"index"`
 }
 
-//TableName is return the table name in MySQL database.
+//TableName is return the table name of Component in MySQL database.
 func (c *Component) TableName() string {
 	return "component"
 }
