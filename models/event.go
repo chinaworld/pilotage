@@ -38,10 +38,15 @@ func (e *EventDefinition) TableName() string {
 //Event is execute events in the system.
 type Event struct {
 	ID             int64      `json:"id" gorm:"primary_key"`
-	Source         string     `json:"source" sql:"not null;type:text"`
 	Header         string     `json:"header" sql:"not null;type:text"`
 	Payload        string     `json:"payload" sql:"not null;type:text"`
 	Authorizations string     `json:"authorization" sql:"null;type:text"`
+	Type           int64      `json:"type" sql:"not null;default:0"`
+	Source         int64      `json:"source" sql:"not null;default:0"`
+	PipelineID     int64      `json:"pipeline_id" sql:"not null;default:0"`
+	StageID        int64      `json:"stage_id" sql:"not null;default:0"`
+	ActionID       int64      `json:"action_id" sql:"not null;default:0"`
+	Sequence       int64      `json:"sequence" sql:"not null;default:0"`
 	CreatedAt      time.Time  `json:"created" sql:""`
 	UpdatedAt      time.Time  `json:"updated" sql:""`
 	DeletedAt      *time.Time `json:"deleted" sql:"index"`
