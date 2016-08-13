@@ -19,11 +19,11 @@ const (
 //And the system events will be initlization with pilotage system.
 type EventDefinition struct {
 	ID          int64      `json:"id" gorm:"primary_key"`
-	ComponentID int64      `json:"component_id" sql:"not null" gorm:"unique_index:component_event"`
+	ComponentID int64      `json:"component_id" sql:"not null;default:0" gorm:"unique_index:component_event"`
 	Event       string     `json:"event" sql:"not null;type:varchar(255)" gorm:"unique_index:component_event"`
 	Title       string     `json:"title" sql:"null:type:varchar(255)"`
-	Type        int64      `json:"type" sql:"not null"`
-	Source      int64      `json:"source" sql:"not null"`
+	Type        int64      `json:"type" sql:"not null;default:0"`
+	Source      int64      `json:"source" sql:"not null;default:0"`
 	Definition  string     `json:"type" sql:"null;type:text"`
 	CreatedAt   time.Time  `json:"created" sql:""`
 	UpdatedAt   time.Time  `json:"updated" sql:""`

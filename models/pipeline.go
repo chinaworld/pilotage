@@ -32,8 +32,8 @@ func (p *Pipeline) TableName() string {
 //Stage is Pipeline unit.
 type Stage struct {
 	ID             int64      `json:"id" gorm:"primary_key"`
-	PipelineID     int64      `json:"pipeline_id" sql:"not null"`
-	Type           int64      `json:"type" sql:"not null"`
+	PipelineID     int64      `json:"pipeline_id" sql:"not null;default:0"`
+	Type           int64      `json:"type" sql:"not null;default:0"`
 	Sequence       int64      `json:"sequence" sql:"not null;default:0"`
 	Stage          string     `json:"stage" sql:"not null;type:varchar(255)"`
 	Title          string     `json:"title" sql:"null;type:varchar(255)"`
@@ -52,7 +52,7 @@ func (s *Stage) TableName() string {
 //Action is Stage unit.
 type Action struct {
 	ID             int64      `json:"id" gorm:"primary_key"`
-	StageID        int64      `json:"stage_id" sql:"not null"`
+	StageID        int64      `json:"stage_id" sql:"not null;default:0"`
 	ComponentID    int64      `json:"component_id" sql:"not null;default:0"`
 	ServiceID      int64      `json:"service_id" sql:"not null;default:0"`
 	Action         string     `json:"action" sql:"not null;varchar(255)"`

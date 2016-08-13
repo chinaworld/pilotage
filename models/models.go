@@ -30,7 +30,7 @@ func init() {
 	}
 }
 
-//
+//Sync is
 func Sync() error {
 	log.Info("Sync database structs")
 
