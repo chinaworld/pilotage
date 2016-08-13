@@ -9,6 +9,7 @@ type ServiceList struct {
 	Title          string     `json:"title" sql:"null;type:varchar(255)"`
 	Gravatar       string     `json:"gravatar" sql:"null;type:text"`
 	Endpoints      string     `json:"endpoints" sql:"null;type:text"`
+	Status         string     `json:"status" sql:"null;type:text"`
 	Environments   string     `json:"environments" sql:"null;type:text"`
 	Authorizations string     `json:"authorization" sql:"null;type:text"`
 	Configurations string     `json:"configurations" sql:"null;type:text"`

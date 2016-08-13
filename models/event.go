@@ -56,3 +56,20 @@ type Event struct {
 func (e *Event) TableName() string {
 	return "event"
 }
+
+//Environment is Pipeline environments.
+type Environment struct {
+	ID         int64      `json:"id" gorm:"primary_key"`
+	PipelineID int64      `json:"pipeline_id" sql:"not null;default:0"`
+	Sequence   int64      `json:"sequence" sql:"not null;default:0"`
+	Key        string     `json:"key" sql:"not null;type:varchar(255)"`
+	Value      string     `json:"value" sql:"not null;type:text"`
+	CreatedAt  time.Time  `json:"created" sql:""`
+	UpdatedAt  time.Time  `json:"updated" sql:""`
+	DeletedAt  *time.Time `json:"deleted" sql:"index"`
+}
+
+//TableName is return the name of Outcome in MySQL database.
+func (e *Environment) TableName() string {
+	return "environment"
+}

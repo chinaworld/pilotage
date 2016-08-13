@@ -5,7 +5,6 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
 
 	"github.com/containerops/pilotage/setting"
 )
@@ -34,9 +33,9 @@ func init() {
 func Sync() error {
 	log.Info("Sync database structs")
 
-	db.AutoMigrate(&Service{}, &Component{})
+	db.AutoMigrate(&ServiceList{}, &Service{}, &Component{})
 	db.AutoMigrate(&Pipeline{}, &Stage{}, &Action{}, &Outcome{})
-	db.AutoMigrate(&Event{})
+	db.AutoMigrate(&EventDefinition{}, &Event{}, &Environment{})
 
 	return nil
 }
