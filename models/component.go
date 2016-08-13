@@ -7,9 +7,13 @@ type Component struct {
 	ID             int64      `json:"id" gorm:"primary_key"`
 	Namespace      string     `json:"namespace" sql:"not null;type:varchar(255)" gorm:"unique_index:namespace_component"`
 	Component      string     `json:"component" sql:"not null;type:varchar(255)" gorm:"unique_index:namespace_component"`
+	Title          string     `json:"title" sql:"null;type:varchar(255)"`
+	Gravatar       string     `json:"gravatar" sql:"null;type:text"`
+	Description    string     `json:"description" sql:"null;type:text"`
+	Endpoint       string     `json:"endpoint" sql:"null;type:text"`
+	Environments   string     `json:"environments" sql:"null;type:text"`
 	Location       string     `json:"location" sql:"not null;type:text"`
 	Tag            string     `json:"tag" sql:"null;type:varchar(255)"`
-	Description    string     `json:"description" sql:"null;type:text"`
 	VolumeLocation string     `json:"volume_location" sql:"null;type:text"`
 	VolumeData     string     `json:"volume_data" sql:"null;type:text"`
 	Resource       string     `json:"resource" sql:"null;type:varchar(255)"`

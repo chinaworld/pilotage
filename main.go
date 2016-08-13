@@ -5,6 +5,8 @@ import (
 
 	"github.com/urfave/cli"
 
+	_ "github.com/jinzhu/gorm/dialects/mysql"
+
 	"github.com/containerops/pilotage/cmd"
 	"github.com/containerops/pilotage/setting"
 )
