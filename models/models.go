@@ -33,7 +33,7 @@ func init() {
 func Sync() error {
 	log.Info("Sync database structs")
 
-	db.AutoMigrate(&ServiceList{}, &Service{}, &Component{})
+	db.AutoMigrate(&ServiceDefinition{}, &Service{}, &Component{})
 	db.AutoMigrate(&Pipeline{}, &Stage{}, &Action{}, &Outcome{})
 	db.AutoMigrate(&EventDefinition{}, &Event{}, &Environment{})
 
