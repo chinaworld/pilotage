@@ -2,8 +2,8 @@ package models
 
 import "time"
 
-//ServiceList is the list of DevOps service already integration the Pilotage.
-type ServiceList struct {
+//ServiceDefinition is the list of DevOps service already integration the Pilotage.
+type ServiceDefinition struct {
 	ID             int64      `json:"id" gorm:"primary_key"`
 	Service        string     `json:"service" sql:"not null;type:varchar(255);unique"`
 	Title          string     `json:"title" sql:"null;type:varchar(255)"`
@@ -20,8 +20,8 @@ type ServiceList struct {
 }
 
 //TableName is return the table name of Component in MySQL database.
-func (sl *ServiceList) TableName() string {
-	return "serivce_list"
+func (sd *ServiceDefinition) TableName() string {
+	return "serivce_definition"
 }
 
 //Service is third DevOps service outside the system, is must be the one of Service List.
