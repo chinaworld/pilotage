@@ -1,6 +1,7 @@
 package router
 
 import (
+	"github.com/go-macaron/binding"
 	"gopkg.in/macaron.v1"
 
 	"github.com/containerops/pilotage/handler"
@@ -15,7 +16,7 @@ func SetRouters(m *macaron.Macaron) {
 		m.Group("/v1", func() {
 			//Definie the supported service.
 			m.Group("/service", func() {
-				m.Post("/", handler.PostServiceDefinitionV1Handler)
+				m.Post("/", binding.Bind(handler.PostServiceDefinitionForm{}), handler.PostServiceDefinitionV1Handler)
 				m.Get("/list", handler.GetServiceDefinitionListV1Handler)
 
 				m.Group("/:service", func() {
