@@ -4,13 +4,40 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"github.com/containerops/pilotage/models"
+
 	"gopkg.in/macaron.v1"
 )
 
-//PostServiceDefinitionV1Handler is
-func PostServiceDefinitionV1Handler(ctx *macaron.Context) (int, []byte) {
-	result, _ := json.Marshal(map[string]string{"message": ""})
-	return http.StatusOK, result
+//PostServiceDefinitionForm is
+type PostServiceDefinitionForm struct {
+	Service        string `from:"service" binding:"Required"`
+	Title          string `from:"title" binding:"Required"`
+	Gravatar       string `from:"gravatar" binding:""`
+	Endpoints      string `from:"endpoints" binding:""`
+	Environments   string `from:"environments" binding:""`
+	Authorizations string `from:"authorizations" binding:""`
+	Configurations string `from:"configurations" binding:""`
+	Description    string `from:"description" binding:""`
+}
+
+//PostServiceDefinitionV1Handler is function intergrated the third DevOps service with Pilotage.
+//Support:
+//	- [Github](https://github.com) [TODO]
+//	- [Slack](https://slack.com) [TODO]
+//	- [BitBucket](https://bitbucket.org) [TODO]
+//  - [Gitter](https://gitter.im) [TODO]
+//	- [Travis CI](https://travis-ci.org/) [TODO]
+func PostServiceDefinitionV1Handler(ctx *macaron.Context, s PostServiceDefinitionForm) (int, []byte) {
+	df := models.ServiceDefinition{}
+
+	if id, err := df.Create(s.Service, s.Title, s.Gravatar, s.Endpoints, s.Environments, s.Authorizations, s.Configurations, s.Description); err != nil {
+		result, _ := json.Marshal(map[string]string{"message": err.Error()})
+		return http.StatusBadRequest, result
+	} else {
+		result, _ := json.Marshal(map[string]interface{}{"service": s.Service, "id": id})
+		return http.StatusOK, result
+	}
 }
 
 //GetServiceDefinitionListV1Handler is
