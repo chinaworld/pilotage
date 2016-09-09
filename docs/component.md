@@ -12,11 +12,17 @@ The component definition is open, we are glad to hear you feedback. Please open 
 
 ### How Write A DevOps Component
 
-#### How To Got A Pipeline Event Data
+#### Write A Execute Task
+
+#### How To Got And Export A Pipeline Event Data
 
 ##### Get A Event Data From REST API
 
 ##### Get A Event Data From Environment Variable
+
+##### Export Event Data
+
+#### How To Definition The Event Data With Editor
 
 #### System Callback Environment Variable
 
@@ -29,8 +35,6 @@ Sequence |  Variable       |  Value
    3     | TASK_STATUS     | When the container of DevOps component execute the task, it should call the REST API of *TASK_STATUS* passing the interim outputs to the execute engine repeatly.
    4     | TASK_RESULT     | When the container of DevOps component execute successfully or failure, it should call the REST API of *TASK_RESULT* passing the result and final output to the execute engine. 
    5     | COMPONENT_STOP  | When the program of task in the container of DevOps component stop completely, it should call REST API of *COMPONENT_STOP* passing the stop status to the execute engine. The engine will notify the orchestration tools destory the container and release the resource. 
-
-#### Write A Execute Task
 
 #### Build DevOps Component With Dockerfile And Acbuild
 
