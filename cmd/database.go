@@ -1,41 +1,62 @@
 package cmd
 
 import (
-	"fmt"
-
-	"github.com/urfave/cli"
+	"github.com/spf13/cobra"
 
 	"github.com/containerops/pilotage/models"
 )
 
-var CmdDatabase = cli.Command{
-	Name:        "database",
-	Usage:       "database utils for backend database",
-	Description: "Pilotage run base SQL database like MySQL, database command provide some utils of migrate, backup, config and so on.",
-	Action:      runDatabase,
-	Flags: []cli.Flag{
-		cli.StringFlag{
-			Name:  "action",
-			Usage: "Action，[sync/backup/restore]",
-		},
-	},
+// databasecmd is subcommand which migrate/backup/restore Pilotage's database.
+var databaseCmd = &cobra.Command{
+	Use:   "database",
+	Short: "Database subcommand migrate/backup/restore Pilotage's database.",
+	Long:  ``,
 }
 
-func runDatabase(c *cli.Context) error {
-	if len(c.String("action")) > 0 {
-		action := c.String("action")
+// migrateDatabaseCmd is subcommand migrate Pilotage's database.
+var migrateDatabaseCmd = &cobra.Command{
+	Use:   "migrate",
+	Short: "migrate subcommand migrate Pilotage's database.",
+	Long:  ``,
+	Run:   migrateDatabase,
+}
 
-		switch action {
-		case "sync":
-			if err := models.Sync(); err != nil {
-				fmt.Println("Init database struct error, ", err.Error())
-				return err
-			}
-			break
-		default:
-			break
-		}
-	}
+// backupDatabaseCmd is subcommand backup Pilotage's database.
+var backupDatabaseCmd = &cobra.Command{
+	Use:   "backup",
+	Short: "backup subcommand backup Pilotage's database.",
+	Long:  ``,
+	Run:   backupDatabase,
+}
 
-	return nil
+// restoreDatabaseCmd is subcommand restore Pilotage's database.
+var restoreDatabaseCmd = &cobra.Command{
+	Use:   "restore",
+	Short: "restore subcommand restore Pilotage's database.",
+	Long:  ``,
+	Run:   restoreDatabase,
+}
+
+// init()
+func init() {
+	RootCmd.AddCommand(databaseCmd)
+
+	databaseCmd.AddCommand(migrateDatabaseCmd)
+	databaseCmd.AddCommand(backupDatabaseCmd)
+	databaseCmd.AddCommand(restoreDatabaseCmd)
+}
+
+// migrateDatabase is auto-migrate database of Dockyard.
+func migrateDatabase(cmd *cobra.Command, args []string) {
+	models.Migrate()
+}
+
+// backupDatabase is
+func backupDatabase(cmd *cobra.Command, args []string) {
+
+}
+
+// restoreDatabase is
+func restoreDatabase(cmd *cobra.Command, args []string) {
+
 }
