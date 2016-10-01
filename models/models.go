@@ -6,18 +6,18 @@ import (
 	log "github.com/Sirupsen/logrus"
 	"github.com/jinzhu/gorm"
 
-	"github.com/containerops/pilotage/setting"
+	"github.com/containerops/configure"
 )
 
 var (
 	db *gorm.DB
 )
 
-//
-func init() {
+// OpenDatabase is
+func OpenDatabase() {
 	var err error
 
-	if db, err = gorm.Open(setting.DatabaseDriver, setting.DatabaseURI); err != nil {
+	if db, err = gorm.Open(configure.GetString("database.driver"), configure.GetString("database.url")); err != nil {
 		log.Fatal("Initlization database connection error.")
 		os.Exit(1)
 	} else {
@@ -29,13 +29,13 @@ func init() {
 	}
 }
 
-//Sync is
-func Sync() error {
-	log.Info("Sync database structs")
+//Migrate is
+func Migrate() {
+	OpenDatabase()
 
 	db.AutoMigrate(&ServiceDefinition{}, &Service{}, &Component{})
 	db.AutoMigrate(&Pipeline{}, &Stage{}, &Action{}, &Outcome{})
 	db.AutoMigrate(&EventDefinition{}, &Event{}, &Environment{})
 
-	return nil
+	log.Info("AutMigrate database structs.")
 }
