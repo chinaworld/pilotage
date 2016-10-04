@@ -26,6 +26,6 @@ _testmain.go
 .vscode
 
 pilotage
-conf/runtime.conf
+conf/*.conf
 log/*
 data/*
