@@ -29,3 +29,6 @@ pilotage
 conf/*.conf
 log/*
 data/*
+docs/_site
+docs/.sass-cache
+docs/.jekyll-metadata

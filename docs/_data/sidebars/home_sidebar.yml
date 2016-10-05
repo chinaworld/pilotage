@@ -1,0 +1,22 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  levels: one
+  folders:
+
+  - title: Overview
+    output: web
+    folderitems:
+    - title: Get Started
+      url: /get-started.html
+      output: web
+  - title: Component
+    output: web
+    folderitems:
+    - title: What's Component
+      url: /concept-component.html
+      output: web
+    - title: Write A Component
+      url: /write-component.html
+      output: web

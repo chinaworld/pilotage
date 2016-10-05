@@ -2,7 +2,7 @@
 
 ## What's ContainerOps?
 
-| DevOps Base Container, DevOps For Container!
+> DevOps With Container, DevOps For Container!
 
 ## What is Pilotage ?
 Pilotage is a DevOps workflow engine with customizable DevOps component repository base container, and it's core project of ContainerOps. It's key features and goals include:
