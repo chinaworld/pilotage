@@ -1,22 +1,57 @@
-# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
-
 entries:
 - title: Sidebar
-  levels: one
   folders:
+
+  - title: Introduction
+    output: web
+    folderitems:
+      - title: Introduction
+        output: web
+        url: /introduction.html
+
+      - title: Concepts
+        output: web
+        url: /concepts.html
+
+        subfolders:
+          - title: ContainerOps VS Others
+            output: web
+            subfolderitems:
+
+            - title: Jenkins
+              output: web
+              url: /vs-jenkins.html
+
+            - title: Concourse
+              output: web
+              url: /vs-concourse.html
+
+            - title: GoCD
+              output: web
+              url: /vs-gocd.html
+
+            - title: Travis CI And Other Hosted Service
+              output: web
+              url: /vs-travis.html
+
+
 
   - title: Overview
     output: web
     folderitems:
+
     - title: Get Started
-      url: /get-started.html
       output: web
+      url: /get-started.html
+
   - title: Component
     output: web
     folderitems:
+
     - title: What's Component
+      output: web
       url: /concept-component.html
-      output: web
+
     - title: Write A Component
-      url: /write-component.html
       output: web
+      url: /write-component.html
