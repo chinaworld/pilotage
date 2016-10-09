@@ -26,7 +26,8 @@ const (
 type EventDefinition struct {
 	ID         int64      `json:"id" gorm:"primary_key"`                         //
 	Event      string     `json:"event" sql:"unique;not null;type:varchar(255)"` //Event name for query.
-	Title      string     `json:"title" sql:"null:type:varchar(255)"`            //Event name for display.
+	Title      string     `json:"title" sql:"null;type:varchar(255)"`            //Event name for display.
+	Action     int64      `json:"action" sql:"not null;default:0"`               // action's id that event bind
 	Character  int64      `json:"character" sql:"not null;default:0"`            //CharacterServiceEvent or CharacterComponentEvent.
 	Type       int64      `json:"type" sql:"not null;default:0"`                 //TypeSystemEvent or TypeUserEvent.
 	Source     int64      `json:"source" sql:"not null;default:0"`               //SourceInnerEvent or SourceOutsideEvent.
@@ -41,7 +42,7 @@ func (e *EventDefinition) TableName() string {
 	return "event_definition"
 }
 
-func (e *EventDefinition) GetConn() *gorm.DB {
+func (e *EventDefinition) GetEventDefinition() *gorm.DB {
 	return db.Model(&EventDefinition{})
 }
 
@@ -68,7 +69,7 @@ func (e *Event) TableName() string {
 	return "event"
 }
 
-func (e *Event) GetConn() *gorm.DB {
+func (e *Event) GetEvent() *gorm.DB {
 	return db.Model(&Event{})
 }
 
@@ -89,6 +90,6 @@ func (e *Environment) TableName() string {
 	return "environment"
 }
 
-func (e *Environment) GetConn() *gorm.DB {
+func (e *Environment) GetEnvironment() *gorm.DB {
 	return db.Model(&Environment{})
 }

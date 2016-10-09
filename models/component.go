@@ -43,6 +43,6 @@ func (c *Component) TableName() string {
 	return "component"
 }
 
-func (c *Component) GetConn() *gorm.DB {
+func (c *Component) GetComponent() *gorm.DB {
 	return db.Model(&Component{})
 }

@@ -43,7 +43,7 @@ func (p *Pipeline) TableName() string {
 	return "pipeline"
 }
 
-func (p *Pipeline) GetConn() *gorm.DB {
+func (p *Pipeline) GetPipeline() *gorm.DB {
 	return db.Model(&Component{})
 }
 
@@ -69,7 +69,7 @@ func (s *Stage) TableName() string {
 	return "stage"
 }
 
-func (s *Stage) GetConn() *gorm.DB {
+func (s *Stage) GetStage() *gorm.DB {
 	return db.Model(&Stage{})
 }
 
@@ -95,7 +95,7 @@ func (a *Action) TableName() string {
 	return "action"
 }
 
-func (a *Action) GetConn() *gorm.DB {
+func (a *Action) GetAction() *gorm.DB {
 	return db.Model(&Action{})
 }
 
@@ -121,6 +121,6 @@ func (o *Outcome) TableName() string {
 	return "outcome"
 }
 
-func (o *Outcome) GetConn() *gorm.DB {
+func (o *Outcome) GetOutcome() *gorm.DB {
 	return db.Model(&Outcome{})
 }
