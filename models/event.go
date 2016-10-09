@@ -2,6 +2,8 @@ package models
 
 import (
 	"time"
+
+	"github.com/jinzhu/gorm"
 )
 
 const (
@@ -39,6 +41,10 @@ func (e *EventDefinition) TableName() string {
 	return "event_definition"
 }
 
+func (e *EventDefinition) GetConn() *gorm.DB {
+	return db.Model(&EventDefinition{})
+}
+
 //Event is execute events in the system.
 type Event struct {
 	ID            int64      `json:"id" gorm:"primary_key"`
@@ -62,6 +68,10 @@ func (e *Event) TableName() string {
 	return "event"
 }
 
+func (e *Event) GetConn() *gorm.DB {
+	return db.Model(&Event{})
+}
+
 //Environment is Pipeline environments. All environment is Key-Value.
 type Environment struct {
 	ID        int64      `json:"id" gorm:"primary_key"`                //
@@ -77,4 +87,8 @@ type Environment struct {
 //TableName is return the name of Outcome in MySQL database.
 func (e *Environment) TableName() string {
 	return "environment"
+}
+
+func (e *Environment) GetConn() *gorm.DB {
+	return db.Model(&Environment{})
 }
