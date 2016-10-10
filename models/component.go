@@ -1,6 +1,10 @@
 package models
 
-import "time"
+import (
+	"time"
+
+	"github.com/jinzhu/gorm"
+)
 
 const (
 	//ComponentTypeDocker means the component is Docker container.
@@ -37,4 +41,8 @@ type Component struct {
 //TableName is return the table name of Component in MySQL database.
 func (c *Component) TableName() string {
 	return "component"
+}
+
+func (c *Component) GetComponent() *gorm.DB {
+	return db.Model(&Component{})
 }

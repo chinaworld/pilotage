@@ -2,6 +2,8 @@ package models
 
 import (
 	"time"
+
+	"github.com/jinzhu/gorm"
 )
 
 const (
@@ -24,7 +26,8 @@ const (
 type EventDefinition struct {
 	ID         int64      `json:"id" gorm:"primary_key"`                         //
 	Event      string     `json:"event" sql:"unique;not null;type:varchar(255)"` //Event name for query.
-	Title      string     `json:"title" sql:"null:type:varchar(255)"`            //Event name for display.
+	Title      string     `json:"title" sql:"null;type:varchar(255)"`            //Event name for display.
+	Action     int64      `json:"action" sql:"not null;default:0"`               // action's id that event bind
 	Character  int64      `json:"character" sql:"not null;default:0"`            //CharacterServiceEvent or CharacterComponentEvent.
 	Type       int64      `json:"type" sql:"not null;default:0"`                 //TypeSystemEvent or TypeUserEvent.
 	Source     int64      `json:"source" sql:"not null;default:0"`               //SourceInnerEvent or SourceOutsideEvent.
@@ -37,6 +40,10 @@ type EventDefinition struct {
 //TableName is return the table name of Event in MySQL database.
 func (e *EventDefinition) TableName() string {
 	return "event_definition"
+}
+
+func (e *EventDefinition) GetEventDefinition() *gorm.DB {
+	return db.Model(&EventDefinition{})
 }
 
 //Event is execute events in the system.
@@ -62,6 +69,10 @@ func (e *Event) TableName() string {
 	return "event"
 }
 
+func (e *Event) GetEvent() *gorm.DB {
+	return db.Model(&Event{})
+}
+
 //Environment is Pipeline environments. All environment is Key-Value.
 type Environment struct {
 	ID        int64      `json:"id" gorm:"primary_key"`                //
@@ -77,4 +88,8 @@ type Environment struct {
 //TableName is return the name of Outcome in MySQL database.
 func (e *Environment) TableName() string {
 	return "environment"
+}
+
+func (e *Environment) GetEnvironment() *gorm.DB {
+	return db.Model(&Environment{})
 }
