@@ -5,36 +5,59 @@ entries:
   - title: Introduction
     output: web
     folderitems:
-      - title: Introduction
+
+    - title: Introduction
+      output: web
+      url: /introduction.html
+
+      subfolders:
+      - title: ContainerOps VS Others
         output: web
-        url: /introduction.html
+        subfolderitems:
 
-      - title: Concepts
-        output: web
-        url: /concepts.html
+        - title: Jenkins
+          output: web
+          url: /vs-jenkins.html
 
-        subfolders:
-          - title: ContainerOps VS Others
-            output: web
-            subfolderitems:
+        - title: Concourse
+          output: web
+          url: /vs-concourse.html
 
-            - title: Jenkins
-              output: web
-              url: /vs-jenkins.html
+        - title: GoCD
+          output: web
+          url: /vs-gocd.html
 
-            - title: Concourse
-              output: web
-              url: /vs-concourse.html
+        - title: Travis CI And Other Hosted Service
+          output: web
+          url: /vs-travis.html
 
-            - title: GoCD
-              output: web
-              url: /vs-gocd.html
+  - title: Concepts
+    output: web
+    folderitems:
 
-            - title: Travis CI And Other Hosted Service
-              output: web
-              url: /vs-travis.html
+    - title: ContainerOps
+      output: web
+      url: /concept-containerops.html
 
+    - title: Pipeline
+      output: web
+      url: /concept-pipeline.html
 
+    - title: Stage
+      output: web
+      url: /concept-stage.html
+
+    - title: Action
+      output: web
+      url: /concept-action.html
+
+    - title: Component
+      output: web
+      url: /concept-component.html
+
+    - title: Service
+      output: web
+      url: /concept-service.html
 
   - title: Overview
     output: web
@@ -55,3 +78,17 @@ entries:
     - title: Write A Component
       output: web
       url: /write-component.html
+  
+  - title: Service
+    output: web
+    folderitems:
+
+  - title: Pipeline
+    output: web
+    folderitems:
+
+  - title: API
+    output: web
+    folderitems:
+
+  
